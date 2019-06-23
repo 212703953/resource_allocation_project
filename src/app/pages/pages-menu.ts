@@ -8,29 +8,39 @@ export const MENU_ITEMS: NbMenuItem[] = [
     home: true,
   },
   {
-    title: "FEATURES",
-    group: true,
-  },
-  {
-    title: "Auth",
-    icon: "nb-locked",
+    title: "Operators",
+    icon: "nb-person",
     children: [
       {
-        title: "Login",
-        link: "/auth/login",
-      },
-      {
-        title: "Register",
-        link: "/auth/register",
-      },
-      {
-        title: "Request Password",
-        link: "/auth/request-password",
-      },
-      {
-        title: "Reset Password",
-        link: "/auth/reset-password",
+        title: "List",
+        link: "/pages/operators-list",
       },
     ],
   },
+  // {
+  //   title: "FEATURES",
+  //   group: true,
+  // },
+  // {
+  //   title: "Auth",
+  //   icon: "nb-locked",
+  //   children: [
+  //     {
+  //       title: "Login",
+  //       link: "/auth/login",
+  //     },
+  //     {
+  //       title: "Register",
+  //       link: "/auth/register",
+  //     },
+  //     {
+  //       title: "Request Password",
+  //       link: "/auth/request-password",
+  //     },
+  //     {
+  //       title: "Reset Password",
+  //       link: "/auth/reset-password",
+  //     },
+  //   ],
+  // },
 ];

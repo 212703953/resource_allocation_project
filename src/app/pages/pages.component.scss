@@ -1,4 +1,5 @@
 @import '../@theme/styles/themes';
+@import "../../../node_modules/angular-calendar/css/angular-calendar.css";
 
 @include nb-install-component() {
   /deep/ router-outlet + * {

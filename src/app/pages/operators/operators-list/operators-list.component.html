@@ -1,0 +1,41 @@
+<div class="row">
+  <nb-card style="width: 100%;">
+    <nb-card-body>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Sso</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Scope</th>
+            <th scope="col">Manager</th>
+            <th scope="col">Shift</th>
+            <th scope="col">Contract Type</th>
+            <th scope="col">Sap</th>
+            <th scope="col">Position</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let operator of operators">
+            <td>{{ operator.id }}</td>
+            <td>{{ operator.sso }}</td>
+            <td>
+              <a
+                [routerLink]="['/pages', 'operators-schedule', operator.sso]"
+                >{{ operator.firstName }}</a
+              >
+            </td>
+            <td>{{ operator.lastName }}</td>
+            <td>{{ operator.scope }}</td>
+            <td>{{ operator.manager }}</td>
+            <td>{{ operator.shift }}</td>
+            <td>{{ operator.contractType }}</td>
+            <td>{{ operator.sap }}</td>
+            <td>{{ operator.position }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </nb-card-body>
+  </nb-card>
+</div>
