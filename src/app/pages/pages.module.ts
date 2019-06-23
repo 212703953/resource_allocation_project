@@ -8,7 +8,7 @@ import { ThemeModule } from "../@theme/theme.module";
 import { MiscellaneousModule } from "./miscellaneous/miscellaneous.module";
 import { CalendarHeaderComponent } from "./calendar-header.component";
 
-import { CalendarModule } from 'angular-calendar';
+import { CalendarModule } from "angular-calendar";
 
 const PAGES_COMPONENTS = [PagesComponent];
 
