@@ -1,35 +1,35 @@
-import { NbMenuItem } from '@nebular/theme';
+import { NbMenuItem } from "@nebular/theme";
 
 export const MENU_ITEMS: NbMenuItem[] = [
   {
-    title: 'Dashboard',
-    icon: 'nb-home',
-    link: '/pages/dashboard',
+    title: "Home",
+    icon: "nb-home",
+    link: "/pages/home",
     home: true,
   },
   {
-    title: 'FEATURES',
+    title: "FEATURES",
     group: true,
   },
   {
-    title: 'Auth',
-    icon: 'nb-locked',
+    title: "Auth",
+    icon: "nb-locked",
     children: [
       {
-        title: 'Login',
-        link: '/auth/login',
+        title: "Login",
+        link: "/auth/login",
       },
       {
-        title: 'Register',
-        link: '/auth/register',
+        title: "Register",
+        link: "/auth/register",
       },
       {
-        title: 'Request Password',
-        link: '/auth/request-password',
+        title: "Request Password",
+        link: "/auth/request-password",
       },
       {
-        title: 'Reset Password',
-        link: '/auth/reset-password',
+        title: "Reset Password",
+        link: "/auth/reset-password",
       },
     ],
   },

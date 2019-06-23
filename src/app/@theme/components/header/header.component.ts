@@ -1,35 +1,34 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from "@angular/core";
 
-import { NbMenuService, NbSidebarService } from '@nebular/theme';
-import { UserData } from '../../../@core/data/users';
-import { AnalyticsService } from '../../../@core/utils';
+import { NbMenuService, NbSidebarService } from "@nebular/theme";
+import { UserData } from "../../../@core/data/users";
+import { AnalyticsService } from "../../../@core/utils";
 
 @Component({
-  selector: 'ngx-header',
-  styleUrls: ['./header.component.scss'],
-  templateUrl: './header.component.html',
+  selector: "ngx-header",
+  styleUrls: ["./header.component.scss"],
+  templateUrl: "./header.component.html",
 })
 export class HeaderComponent implements OnInit {
-
-  @Input() position = 'normal';
+  @Input() position = "normal";
 
   user: any;
 
-  userMenu = [{ title: 'Profile' }, { title: 'Log out' }];
+  userMenu = [{ title: "Profile" }, { title: "Log out" }];
 
-  constructor(private sidebarService: NbSidebarService,
-              private menuService: NbMenuService,
-              private userService: UserData,
-              private analyticsService: AnalyticsService) {
-  }
+  constructor(
+    private sidebarService: NbSidebarService,
+    private menuService: NbMenuService,
+    private userService: UserData,
+    private analyticsService: AnalyticsService,
+  ) {}
 
   ngOnInit() {
-    this.userService.getUsers()
-      .subscribe((users: any) => this.user = users.nick);
+    this.userService.getUser().subscribe((user: any) => (this.user = user));
   }
 
   toggleSidebar(): boolean {
-    this.sidebarService.toggle(true, 'menu-sidebar');
+    this.sidebarService.toggle(true, "menu-sidebar");
 
     return false;
   }
@@ -39,6 +38,6 @@ export class HeaderComponent implements OnInit {
   }
 
   startSearch() {
-    this.analyticsService.trackEvent('startSearch');
+    this.analyticsService.trackEvent("startSearch");
   }
 }

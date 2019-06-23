@@ -1,49 +1,49 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
-import { StateService } from '../../../@core/utils';
+import { StateService } from "../../../@core/utils";
 
 @Component({
-  selector: 'ngx-theme-settings',
-  styleUrls: ['./theme-settings.component.scss'],
+  selector: "ngx-theme-settings",
+  styleUrls: ["./theme-settings.component.scss"],
   template: `
     <h6>LAYOUTS</h6>
     <div class="settings-row">
-      <a *ngFor="let layout of layouts"
-         href="#"
-         [class.selected]="layout.selected"
-         [attr.title]="layout.name"
-         (click)="layoutSelect(layout)">
+      <a
+        *ngFor="let layout of layouts"
+        href="#"
+        [class.selected]="layout.selected"
+        [attr.title]="layout.name"
+        (click)="layoutSelect(layout)"
+      >
         <i [attr.class]="layout.icon"></i>
       </a>
     </div>
     <h6>SIDEBAR</h6>
     <div class="settings-row">
-      <a *ngFor="let sidebar of sidebars"
-         href="#"
-         [class.selected]="sidebar.selected"
-         [attr.title]="sidebar.name"
-         (click)="sidebarSelect(sidebar)">
+      <a
+        *ngFor="let sidebar of sidebars"
+        href="#"
+        [class.selected]="sidebar.selected"
+        [attr.title]="sidebar.name"
+        (click)="sidebarSelect(sidebar)"
+      >
         <i [attr.class]="sidebar.icon"></i>
       </a>
-    </div>
-    <div class="settings-row">
-      <div class="switcher">
-        <ngx-layout-direction-switcher></ngx-layout-direction-switcher>
-      </div>
     </div>
   `,
 })
 export class ThemeSettingsComponent {
-
   layouts = [];
   sidebars = [];
 
   constructor(protected stateService: StateService) {
-    this.stateService.getLayoutStates()
-      .subscribe((layouts: any[]) => this.layouts = layouts);
+    this.stateService
+      .getLayoutStates()
+      .subscribe((layouts: any[]) => (this.layouts = layouts));
 
-    this.stateService.getSidebarStates()
-      .subscribe((sidebars: any[]) => this.sidebars = sidebars);
+    this.stateService
+      .getSidebarStates()
+      .subscribe((sidebars: any[]) => (this.sidebars = sidebars));
   }
 
   layoutSelect(layout: any): boolean {
