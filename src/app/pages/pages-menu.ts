@@ -17,6 +17,18 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
     ],
   },
+  {
+    title: "Factory",
+    icon: "nb-person",
+    link: "/pages/scheduleFactory",
+    home: false,
+    // children: [
+    //   {
+    //     title: "List",
+    //     link: "/pages/operators-list",
+    //   },
+    // ],
+  },
   // {
   //   title: "FEATURES",
   //   group: true,

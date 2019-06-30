@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { PagesComponent } from "./pages.component";
 import { DashboardModule } from "./dashboard/dashboard.module";
 import { OperatorsModule } from "./operators/operators.module";
+import { ScheduleFactoryModule } from "./scheduleFactory/scheduleFactory.module";
 import { PagesRoutingModule } from "./pages-routing.module";
 import { ThemeModule } from "../@theme/theme.module";
 import { MiscellaneousModule } from "./miscellaneous/miscellaneous.module";
@@ -18,6 +19,7 @@ const PAGES_COMPONENTS = [PagesComponent];
     ThemeModule,
     DashboardModule,
     OperatorsModule,
+    ScheduleFactoryModule,
     CalendarModule,
     MiscellaneousModule,
   ],

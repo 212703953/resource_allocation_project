@@ -5,7 +5,7 @@ import { PagesComponent } from "./pages.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { OperatorsListComponent } from "./operators/operators-list/operators-list.component";
 import { OperatorsScheduleComponent } from "./operators/operators-schedule/operators-schedule.component";
-import {ScheduleFactoryComponent} from "./scheduleFactory/scheduleFactory.component";
+import { ScheduleFactoryComponent } from "./scheduleFactory/scheduleFactory.component";
 
 const routes: Routes = [
   {
@@ -17,7 +17,7 @@ const routes: Routes = [
         component: DashboardComponent,
       },
       {
-        path : "home",
+        path : "scheduleFactory",
         component : ScheduleFactoryComponent,
       },
       {
