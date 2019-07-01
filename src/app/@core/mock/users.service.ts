@@ -36,7 +36,7 @@ export class UserService {
   private operator: Operator;
 
   private user = {
-    name: "Maco",
+    name: "User",
     picture: "assets/images/Portrait_Placeholder.png",
   };
   private types = {

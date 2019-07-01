@@ -18,8 +18,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
-    title: "Factory",
-    icon: "nb-person",
+    title: "Factory Schedule",
+    icon: "nb-gear",
     link: "/pages/scheduleFactory",
     home: false,
     // children: [
