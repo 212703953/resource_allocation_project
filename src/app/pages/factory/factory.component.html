@@ -1,0 +1,38 @@
+<h3>
+  Factories
+  <br><br><br>
+  <button class="btn btn-primary pull-right" (click)="addFactory()">
+    Add new factory
+  </button>
+  <div class="clearfix"></div>
+</h3>
+<div class="row">
+  <nb-card style="width: 100%;">
+    <nb-card-body>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Factory Name</th>
+            <th scope="col">Business</th>
+            <th scope="col">Shift 1</th>
+            <th scope="col">Shift 2</th>
+            <th scope="col">Shift 3</th>
+            <th scope="col">Shift</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let factory of factories">
+            <td>{{ factory.id }}</td>
+            <td>{{ factory.name }}</td>
+            <td>{{ factory.business }}</td>
+            <td>{{ factory.shift1 }}</td>
+            <td>{{ factory.shift2 }}</td>
+            <td>{{ factory.shift3 }}</td>
+
+          </tr>
+        </tbody>
+      </table>
+    </nb-card-body>
+  </nb-card>
+</div>

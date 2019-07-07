@@ -29,6 +29,30 @@ export const MENU_ITEMS: NbMenuItem[] = [
     //   },
     // ],
   },
+  {
+    title: "Factory",
+    icon: "nb-plus",
+    link: "/pages/factory",
+    home: false,
+    // children: [
+    //   {
+    //     title: "List",
+    //     link: "/pages/operators-list",
+    //   },
+    // ],
+  },
+  {
+    title: "Sub-business",
+    icon: "nb-plus",
+    link: "/pages/sub-business",
+    home: false,
+    // children: [
+    //   {
+    //     title: "List",
+    //     link: "/pages/operators-list",
+    //   },
+    // ],
+  },
   // {
   //   title: "FEATURES",
   //   group: true,
