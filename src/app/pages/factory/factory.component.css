@@ -10,4 +10,8 @@ pre {
 .table { 
   table-layout: fixed;
 }
+
+.btn {
+  margin-top: 7px;
+}
   
