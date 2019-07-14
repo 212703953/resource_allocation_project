@@ -10,6 +10,7 @@ export class FactoryComponent implements OnInit {
   constructor(private factoryService: FactoryService) { }
 
   public factories: Factory[];
+  public isBeingEditedId: number;
 
   ngOnInit() {
     this.factoryService
@@ -27,7 +28,16 @@ export class FactoryComponent implements OnInit {
   }
 
   editFactory(id: number) {
+    if (this.isBeingEditedId == id) {
+      this.isBeingEditedId = null;
+    } else {
+      this.isBeingEditedId = id;
+    }
+  }
 
+  saveFactory(id: number){
+    this.isBeingEditedId = null;
+    // Call API to save the changes
   }
 
 }
