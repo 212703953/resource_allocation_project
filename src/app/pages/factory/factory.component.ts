@@ -52,11 +52,7 @@ export class FactoryComponent implements OnInit {
     },
   };
 
-  ngOnInit() {
-    this.factoryService
-      .getFactories()
-      .subscribe(factories => (this.factories = factories));
-  }
+  ngOnInit() { }
 
   constructor(private factoryService: FactoryService) {
     this.source = new LocalDataSource();
