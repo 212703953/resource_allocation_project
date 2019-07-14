@@ -4,6 +4,8 @@ import { RouterModule, Routes } from "@angular/router";
 
 import { OperatorsListComponent } from "./operators-list/operators-list.component";
 import { OperatorsScheduleComponent } from "./operators-schedule/operators-schedule.component";
+import { OperatorsEventsComponent } from './operators-events/operators-events.component';
+import{ OperatorsCapabilitiesComponent } from './operators-capabilities/operators-capabilities.component';
 
 import { CalendarModule, DateAdapter } from "angular-calendar";
 import { adapterFactory } from "angular-calendar/date-adapters/date-fns";
@@ -12,6 +14,7 @@ import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { FlatpickrModule } from "angularx-flatpickr";
 import { NgbModalModule } from "@ng-bootstrap/ng-bootstrap";
+
 
 @NgModule({
   imports: [
@@ -27,7 +30,7 @@ import { NgbModalModule } from "@ng-bootstrap/ng-bootstrap";
     }),
   ],
   exports: [],
-  declarations: [OperatorsListComponent, OperatorsScheduleComponent],
+  declarations: [OperatorsListComponent, OperatorsScheduleComponent, OperatorsEventsComponent, OperatorsEventsComponent],
   providers: [],
 })
 export class OperatorsModule {}
