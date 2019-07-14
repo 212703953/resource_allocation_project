@@ -69,6 +69,7 @@ export class FactoryComponent implements OnInit {
   async onConfirmSave(event) {
     let factory: Factory = event.newData;
     factory.id = Math.max(...(await this.source.getAll()).map(x => x.id)) + 1;
+    // Send to API to save record and the resolve
     event.confirm.resolve(factory);
   }
 
