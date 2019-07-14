@@ -65,7 +65,7 @@ export class OperatorsListComponent implements OnInit {
         renderComponent: ActionButtonComponent,
         onComponentInitFunction: (instance) => {
           instance.goToCapabilities.subscribe(sso => {
-            this.router.navigate(['/pages','factory']);
+            this.router.navigate(['/pages', 'operators-capabilities', sso]);
           });
         },
         editable: false,
@@ -105,10 +105,6 @@ export class OperatorsListComponent implements OnInit {
     } else {
       event.confirm.reject();
     }
-  }
-
-  goToBla() {
-
   }
 
 }

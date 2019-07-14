@@ -5,7 +5,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { OperatorsListComponent } from "./operators-list/operators-list.component";
 import { OperatorsScheduleComponent } from "./operators-schedule/operators-schedule.component";
 import { OperatorsEventsComponent } from './operators-events/operators-events.component';
-import{ OperatorsCapabilitiesComponent } from './operators-capabilities/operators-capabilities.component';
+import { OperatorsCapabilitiesComponent } from './operators-capabilities/operators-capabilities.component';
 
 import { CalendarModule, DateAdapter } from "angular-calendar";
 import { adapterFactory } from "angular-calendar/date-adapters/date-fns";
@@ -32,7 +32,7 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
     }),
   ],
   exports: [],
-  declarations: [OperatorsListComponent, OperatorsScheduleComponent, OperatorsEventsComponent, OperatorsEventsComponent],
+  declarations: [OperatorsListComponent, OperatorsScheduleComponent, OperatorsEventsComponent, OperatorsCapabilitiesComponent],
   providers: [],
 })
 export class OperatorsModule { }

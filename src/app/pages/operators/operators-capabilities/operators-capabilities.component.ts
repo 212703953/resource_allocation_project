@@ -8,13 +8,15 @@ import { LocalDataSource } from 'ng2-smart-table';
 @Component({
   selector: "ngx-operators-capabilities",
   templateUrl: "operators-capabilities.component.html",
-  styleUrls:['operators-capabilities.component.scss'],
+  styleUrls: ['operators-capabilities.component.scss'],
 })
 export class OperatorsCapabilitiesComponent implements OnInit {
 
 
 
   public capabilities: OperatorCapability[];
+  public operator: Operator;
+  public isRetrieving = true;
   source: LocalDataSource;
 
   settings = {
@@ -41,25 +43,52 @@ export class OperatorsCapabilitiesComponent implements OnInit {
         addable: false,
       },
       name: {
-        title: 'Capabilities',
+        title: 'Name',
       },
-      business: {
+      type: {
         title: 'Type',
       },
+      expirationDate: {
+        title: 'Expiration date'
+      }
     },
   };
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       if (params.sso) {
+        this.operator = this.usersService.getOperatorBySso(+params.sso);
         let data = this.usersService.getOperatorCapabilities(+params.sso);
         this.source.load(data);
+        this.isRetrieving = false;
       }
     });
   }
 
-  constructor(private usersService: UserService, private route: ActivatedRoute,) {
+  constructor(private usersService: UserService, private route: ActivatedRoute, ) {
     this.source = new LocalDataSource();
 
+  }
+
+  async onConfirmSave(event) {
+    let capability: OperatorCapability = event.newData;
+    var data = (await this.source.getAll());
+    capability.id = data.length == 0 ? 1 : Math.max(...data.map(x => x.id)) + 1;
+    // Send to API to save record and the resolve
+    event.confirm.resolve(capability);
+  }
+
+  onEditConfirm(event) {
+    // Send to API to edit the record and then resolve
+    event.confirm.resolve(event.newData);
+  }
+
+  onDeleteConfirm(event): void {
+    if (window.confirm('Are you sure you want to delete?')) {
+      // Send to API to remove and then resolve
+      event.confirm.resolve();
+    } else {
+      event.confirm.reject();
+    }
   }
 }

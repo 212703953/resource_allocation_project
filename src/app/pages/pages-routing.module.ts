@@ -7,9 +7,10 @@ import { OperatorsListComponent } from "./operators/operators-list/operators-lis
 import { OperatorsScheduleComponent } from "./operators/operators-schedule/operators-schedule.component";
 import { ScheduleFactoryComponent } from "./scheduleFactory/scheduleFactory.component";
 import { FactoryComponent } from "./factory/factory.component";
-import{ SubBusinessComponent } from "./sub-business/sub-business.component";
+import { SubBusinessComponent } from "./sub-business/sub-business.component";
 import { RequirementsComponent } from './requirements/requirements.component';
 import { TasksComponent } from './tasks/tasks.component';
+import { OperatorsCapabilitiesComponent } from './operators/operators-capabilities/operators-capabilities.component';
 
 const routes: Routes = [
   {
@@ -21,8 +22,8 @@ const routes: Routes = [
         component: DashboardComponent,
       },
       {
-        path : "scheduleFactory",
-        component : ScheduleFactoryComponent,
+        path: "scheduleFactory",
+        component: ScheduleFactoryComponent,
       },
       {
         path: "operators-list",
@@ -31,6 +32,10 @@ const routes: Routes = [
       {
         path: "operators-schedule/:sso",
         component: OperatorsScheduleComponent,
+      },
+      {
+        path: "operators-capabilities/:sso",
+        component: OperatorsCapabilitiesComponent,
       },
       {
         path: "tasks",
@@ -61,4 +66,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class PagesRoutingModule {}
+export class PagesRoutingModule { }
