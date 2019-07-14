@@ -1,1 +1,55 @@
-<h3>Placeholder</h3>
+<br>  
+<h3>
+    Requirements
+<!-- </h3> -->
+<br><br>
+<div class="row">
+    <button class="btn btn-primary pull-right" (click)="getSubbusiness()">
+        Sub-bus
+    </button>
+
+    <button class="btn btn-primary pull-right" (click)="getFactory()">
+        Factory
+    </button>
+
+    <button class="btn btn-primary pull-right" (click)="getProdLine()">
+        Prod Line
+    </button>
+    <button class="btn btn-primary pull-right" (click)="getOperation()">
+        Operation
+    </button>         
+</div>
+
+<br><br><br>
+<button class="btn btn-primary pull-right" (click)="addRequirements()">
+Add requirements
+</button>
+    <div class="clearfix"></div>
+  </h3>
+  <div class="row">
+    <nb-card style="width: 100%;">
+      <nb-card-body>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Type</th>
+              <th scope="col">Task</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let factory of factories">
+              <td>{{ requirement.id }}</td>
+              <td>{{ requirement.name }}</td>
+              <td>{{ requirement.type }}</td>
+              <td>{{ requirement.task }}</td>
+              <td><button class="btn btn-primary">Edit</button>&nbsp;
+                <button (click)="deleteRequirement(requirement.id)" class="btn btn-primary">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </nb-card-body>
+    </nb-card>
+  </div>
