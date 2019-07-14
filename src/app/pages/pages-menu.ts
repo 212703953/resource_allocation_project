@@ -10,12 +10,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: "Operators",
     icon: "nb-person",
-    children: [
-      {
-        title: "List",
-        link: "/pages/operators-list",
-      },
-    ],
+    link: "/pages/operators-list",
+    home: false,
   },
   {
     title: "Factory Schedule",

@@ -52,11 +52,7 @@ export class FactoryComponent implements OnInit {
     },
   };
 
-  ngOnInit() {
-    this.factoryService
-      .getFactories()
-      .subscribe(factories => (this.factories = factories));
-  }
+  ngOnInit() { }
 
   constructor(private factoryService: FactoryService) {
     this.source = new LocalDataSource();
@@ -69,6 +65,7 @@ export class FactoryComponent implements OnInit {
   async onConfirmSave(event) {
     let factory: Factory = event.newData;
     factory.id = Math.max(...(await this.source.getAll()).map(x => x.id)) + 1;
+    // Send to API to save record and the resolve
     event.confirm.resolve(factory);
   }
 

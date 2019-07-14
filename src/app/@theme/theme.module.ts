@@ -46,6 +46,7 @@ import {
   ThemeSwitcherComponent,
   ThemeSwitcherListComponent,
   ToggleSettingsButtonComponent,
+  ActionButtonComponent
 } from "./components";
 import {
   CapitalizePipe,
@@ -113,9 +114,10 @@ const COMPONENTS = [
   ThreeColumnsLayoutComponent,
   TwoColumnsLayoutComponent,
   ToggleSettingsButtonComponent,
+  ActionButtonComponent
 ];
 
-const ENTRY_COMPONENTS = [ThemeSwitcherListComponent];
+const ENTRY_COMPONENTS = [ThemeSwitcherListComponent, ActionButtonComponent];
 
 const PIPES = [
   CapitalizePipe,

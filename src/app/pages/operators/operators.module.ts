@@ -14,6 +14,7 @@ import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { FlatpickrModule } from "angularx-flatpickr";
 import { NgbModalModule } from "@ng-bootstrap/ng-bootstrap";
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { NgbModalModule } from "@ng-bootstrap/ng-bootstrap";
     NgbModalModule,
     ThemeModule,
     RouterModule,
+    Ng2SmartTableModule,
     FlatpickrModule.forRoot(),
     CalendarModule.forRoot({
       provide: DateAdapter,
@@ -33,4 +35,4 @@ import { NgbModalModule } from "@ng-bootstrap/ng-bootstrap";
   declarations: [OperatorsListComponent, OperatorsScheduleComponent, OperatorsEventsComponent, OperatorsEventsComponent],
   providers: [],
 })
-export class OperatorsModule {}
+export class OperatorsModule { }
