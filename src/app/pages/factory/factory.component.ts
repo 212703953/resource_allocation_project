@@ -1,16 +1,56 @@
 import { Component, OnInit } from '@angular/core';
 import { Factory } from "../../models";
 import { FactoryService } from '../../@core/mock/factory.service';
+import { LocalDataSource } from 'ng2-smart-table';
 @Component({
   selector: 'ngx-factory',
   templateUrl: './factory.component.html',
-  styleUrls: ['factory.component.css']
+  styleUrls: ['factory.component.scss']
 })
 export class FactoryComponent implements OnInit {
-  constructor(private factoryService: FactoryService) { }
-
   public factories: Factory[];
-  public isBeingEditedId: number;
+  source: LocalDataSource;
+
+  settings = {
+    add: {
+      addButtonContent: '<i class="nb-plus"></i>',
+      createButtonContent: '<i class="nb-checkmark"></i>',
+      cancelButtonContent: '<i class="nb-close"></i>',
+      confirmCreate: true
+    },
+    edit: {
+      editButtonContent: '<i class="nb-edit"></i>',
+      saveButtonContent: '<i class="nb-checkmark"></i>',
+      cancelButtonContent: '<i class="nb-close"></i>',
+      confirmSave: true
+    },
+    delete: {
+      deleteButtonContent: '<i class="nb-trash"></i>',
+      confirmDelete: true,
+    },
+    columns: {
+      id: {
+        title: 'Id',
+        editable: false,
+        addable: false,
+      },
+      name: {
+        title: 'Name',
+      },
+      business: {
+        title: 'Business',
+      },
+      shift1: {
+        title: 'Shift1',
+      },
+      shift2: {
+        title: 'Shift2',
+      },
+      shift3: {
+        title: 'Shift3',
+      },
+    },
+  };
 
   ngOnInit() {
     this.factoryService
@@ -18,26 +58,32 @@ export class FactoryComponent implements OnInit {
       .subscribe(factories => (this.factories = factories));
   }
 
-  addFactory() {
-    window.alert('You will soon be able to add a factory that way')
+  constructor(private factoryService: FactoryService) {
+    this.source = new LocalDataSource();
+
+    this.factoryService.getFactories().subscribe((data) => {
+      this.source.load(data);
+    });
   }
 
-  deleteFactory(id: number) {
-    let factory = this.factories.find(f => f.id == id);
-    this.factories.splice(this.factories.indexOf(factory), 1);
+  async onConfirmSave(event) {
+    let factory: Factory = event.newData;
+    factory.id = Math.max(...(await this.source.getAll()).map(x => x.id)) + 1;
+    event.confirm.resolve(factory);
   }
 
-  editFactory(id: number) {
-    if (this.isBeingEditedId == id) {
-      this.isBeingEditedId = null;
+  onEditConfirm(event) {
+    // Send to API to edit the record and then resolve
+    event.confirm.resolve(event.newData);
+  }
+
+  onDeleteConfirm(event): void {
+    if (window.confirm('Are you sure you want to delete?')) {
+      // Send to API to remove and then resolve
+      event.confirm.resolve();
     } else {
-      this.isBeingEditedId = id;
+      event.confirm.reject();
     }
-  }
-
-  saveFactory(id: number){
-    this.isBeingEditedId = null;
-    // Call API to save the changes
   }
 
 }
