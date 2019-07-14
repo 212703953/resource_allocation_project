@@ -12,6 +12,7 @@ import { CalendarHeaderComponent } from "./calendar-header.component";
 import { CalendarModule } from "angular-calendar";
 import { FactoryModule } from './factory/factory.module';
 import { SubBusinessModule } from './sub-business/sub-business.module';
+import { RequirementsModule } from './requirements/requirements.module';
 
 const PAGES_COMPONENTS = [PagesComponent];
 
@@ -22,6 +23,7 @@ const PAGES_COMPONENTS = [PagesComponent];
     DashboardModule,
     OperatorsModule,
     ScheduleFactoryModule,
+    RequirementsModule,
     FactoryModule,
     SubBusinessModule,
     CalendarModule,
