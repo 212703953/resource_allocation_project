@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Requirement } from '../../models';
+import { RequirementService } from '../../@core/mock/requirement.service';
 
 @Component({
   selector: 'ngx-requirements',
@@ -8,13 +9,18 @@ import { Requirement } from '../../models';
 })
 
 export class RequirementsComponent implements OnInit  {
-  constructor() {}
+  constructor(private requirementService: RequirementService) {}
 
-  public Requirements : Requirement[];
-  ngOnInit(){}
+  public requirements : Requirement[];
+  ngOnInit(){
+    this.requirementService
+    .getRequirements()
+    .subscribe(requirements => (this.requirements = requirements));
+  }
   getSubbusiness(){}
   getFactory(){}
   getOperation(){}
   getProdline(){}
   deleteRequirement(id:number){}
+  editRequirement(){}
 }

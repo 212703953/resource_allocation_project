@@ -1,6 +1,6 @@
 <br>  
 <h3>
-    Requirements
+    Tasks
 <!-- </h3> -->
 <br><br>
 <div class="row">
@@ -21,8 +21,8 @@
 </div>
 
 <br><br><br>
-<button class="btn btn-primary pull-right" (click)="addRequirements()">
-Add requirements
+<button class="btn btn-primary pull-right" (click)="addTasks()">
+Add Tasks
 </button>
     <div class="clearfix"></div>
   </h3>
@@ -33,20 +33,16 @@ Add requirements
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Name</th>
-              <th scope="col">Type</th>
               <th scope="col">Task</th>
               <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let requirement of requirements">
-              <td>{{ requirement.id }}</td>
-              <td>{{ requirement.name }}</td>
-              <td>{{ requirement.type }}</td>
-              <td>{{ requirement.task }}</td>
+            <tr *ngFor="let task of tasks">
+              <td>{{ task.id }}</td>
+              <td>{{ task.name }}</td>
               <td><button class="btn btn-primary">Edit</button>&nbsp;
-                <button (click)="deleteRequirement(requirement.id)" class="btn btn-primary">Delete</button>
+                <button (click)="deleteTask(task.id)" class="btn btn-primary">Delete</button>
               </td>
             </tr>
           </tbody>

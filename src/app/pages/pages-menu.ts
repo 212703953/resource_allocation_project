@@ -30,6 +30,18 @@ export const MENU_ITEMS: NbMenuItem[] = [
     // ],
   },
   {
+    title: "Tasks",
+    icon: "nb-chevron-right",
+    link: "/pages/tasks",
+    home: false,
+    // children: [
+    //   {
+    //     title: "List",
+    //     link: "/pages/operators-list",
+    //   },
+    // ],
+  },
+  {
     title: "Requirements",
     icon: "nb-checkmark",
     link: "/pages/requirements",
