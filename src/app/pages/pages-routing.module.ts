@@ -8,6 +8,7 @@ import { OperatorsScheduleComponent } from "./operators/operators-schedule/opera
 import { ScheduleFactoryComponent } from "./scheduleFactory/scheduleFactory.component";
 import { FactoryComponent } from "./factory/factory.component";
 import{ SubBusinessComponent } from "./sub-business/sub-business.component";
+import { RequirementsComponent } from './requirements/requirements.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,10 @@ const routes: Routes = [
       {
         path: "operators-schedule/:sso",
         component: OperatorsScheduleComponent,
+      },
+      {
+        path: "requirements",
+        component: RequirementsComponent,
       },
       {
         path: "factory",
