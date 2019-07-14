@@ -18,6 +18,7 @@
             <th scope="col">Shift 1</th>
             <th scope="col">Shift 2</th>
             <th scope="col">Shift 3</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -28,7 +29,9 @@
             <td>{{ factory.shift1 }}</td>
             <td>{{ factory.shift2 }}</td>
             <td>{{ factory.shift3 }}</td>
-
+            <td><button class="btn btn-primary">Edit</button>&nbsp;
+              <button (click)="deleteFactory(factory.id)" class="btn btn-primary">Delete</button>
+            </td>
           </tr>
         </tbody>
       </table>
