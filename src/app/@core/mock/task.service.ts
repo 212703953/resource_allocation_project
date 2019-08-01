@@ -1,13 +1,15 @@
 import { of as observableOf, Observable } from "rxjs";
 import { Injectable } from "@angular/core";
 import { Task } from "../../models"
+import  { Requirement } from "../../models"
 
 @Injectable()
 export class TaskService {
-  public Tasks: Task[] = [
+  public tasks: Task[] = [
     {
       id: 1,
       name: "Get accessto the shopfloor",
+      requirements : [],
 
     },
 
@@ -16,11 +18,15 @@ export class TaskService {
   private task : Task;
 
   getTasks(): Observable<Task[]> {
-    return observableOf(this.Tasks);
+    return observableOf(this.tasks);
   }
 
   getTaskById(id: number): Task {
-    return this.Tasks.find(x => x.id === id);
+    return this.tasks.find(x => x.id === id);
+  }
+
+  getTaskRequirements(id:number):Requirement[]{
+    return this.tasks.find(x=>x.id===id).requirements;
   }
 
 }

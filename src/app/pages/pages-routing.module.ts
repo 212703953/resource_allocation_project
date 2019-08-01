@@ -46,6 +46,12 @@ const routes: Routes = [
         path: "tasks",
         component: TasksComponent,
       },
+
+      {
+        path: "task/:id/requirements",
+        component: RequirementsComponent,
+      },
+
       {
         path: "requirements",
         component: RequirementsComponent,

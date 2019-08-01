@@ -1,52 +1,11 @@
-<br>  
-<h3>
+<nb-card>
+  <nb-card-header>
     Tasks
-<!-- </h3> -->
-<br><br>
-<div class="row">
-    <button class="btn btn-primary pull-right" (click)="getSubbusiness()">
-        Sub-bus
-    </button>
+  </nb-card-header>
 
-    <button class="btn btn-primary pull-right" (click)="getFactory()">
-        Factory
-    </button>
-
-    <button class="btn btn-primary pull-right" (click)="getProdLine()">
-        Prod Line
-    </button>
-    <button class="btn btn-primary pull-right" (click)="getOperation()">
-        Operation
-    </button>         
-</div>
-
-<br><br><br>
-<button class="btn btn-primary pull-right" (click)="addTasks()">
-Add Tasks
-</button>
-    <div class="clearfix"></div>
-  </h3>
-  <div class="row">
-    <nb-card style="width: 100%;">
-      <nb-card-body>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Task</th>
-              <th scope="col">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let task of tasks">
-              <td>{{ task.id }}</td>
-              <td>{{ task.name }}</td>
-              <td><button class="btn btn-primary">Edit</button>&nbsp;
-                <button (click)="deleteTask(task.id)" class="btn btn-primary">Delete</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </nb-card-body>
-    </nb-card>
-  </div>
+  <nb-card-body>
+    <ng2-smart-table [settings]="settings" [source]="source" (createConfirm)="onConfirmSave($event)"
+      (editConfirm)="onEditConfirm($event)" (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>
