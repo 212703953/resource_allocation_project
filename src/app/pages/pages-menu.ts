@@ -8,15 +8,21 @@ export const MENU_ITEMS: NbMenuItem[] = [
     home: true,
   },
   {
-    title: "Operators",
-    icon: "nb-person",
-    link: "/pages/operators-list",
-    home: false,
-  },
-  {
     title: "Factory Schedule",
     icon: "nb-gear",
     link: "/pages/scheduleFactory",
+    home: false,
+  },
+  {
+    title: "Sub-business",
+    icon: "nb-plus",
+    link: "/pages/sub-business",
+    home: false,
+  },
+  {
+    title: "Factory",
+    icon: "nb-plus",
+    link: "/pages/factory",
     home: false,
     // children: [
     //   {
@@ -24,6 +30,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
     //     link: "/pages/operators-list",
     //   },
     // ],
+  },
+  {
+    title: "Operators",
+    icon: "nb-person",
+    link: "/pages/operators-list",
+    home: false,
   },
   {
     title: "Tasks",
@@ -49,30 +61,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
     //   },
     // ],
   },
-  {
-    title: "Factory",
-    icon: "nb-plus",
-    link: "/pages/factory",
-    home: false,
-    // children: [
-    //   {
-    //     title: "List",
-    //     link: "/pages/operators-list",
-    //   },
-    // ],
-  },
-  {
-    title: "Sub-business",
-    icon: "nb-plus",
-    link: "/pages/sub-business",
-    home: false,
-    // children: [
-    //   {
-    //     title: "List",
-    //     link: "/pages/operators-list",
-    //   },
-    // ],
-  },
+
+
   // {
   //   title: "FEATURES",
   //   group: true,

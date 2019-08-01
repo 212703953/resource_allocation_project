@@ -11,6 +11,7 @@ import { SubBusinessComponent } from "./sub-business/sub-business.component";
 import { RequirementsComponent } from './requirements/requirements.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { OperatorsCapabilitiesComponent } from './operators/operators-capabilities/operators-capabilities.component';
+import { OperatorsEventsComponent } from './operators/operators-events/operators-events.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
       {
         path: "operators-capabilities/:sso",
         component: OperatorsCapabilitiesComponent,
+      },
+      {
+        path: "operators-events/:sso",
+        component: OperatorsEventsComponent,
       },
       {
         path: "tasks",

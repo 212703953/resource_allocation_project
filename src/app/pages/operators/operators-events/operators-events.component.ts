@@ -13,6 +13,8 @@ import { LocalDataSource } from 'ng2-smart-table';
 export class OperatorsEventsComponent implements OnInit {
   
   public events: OperatorEvent[];
+  public operator: Operator;
+  public isRetrieving = true;
   source: LocalDataSource;
  
   settings = {
@@ -39,7 +41,7 @@ export class OperatorsEventsComponent implements OnInit {
         addable: false,
       },
       name: {
-        title: 'Capabilities',
+        title: 'Unavailabilities',
       },
       type: {
         title: 'Type',
@@ -57,8 +59,9 @@ export class OperatorsEventsComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       if (params.sso) {
-        let data = this.usersService.getOperatorCapabilities(+params.sso);
+        let data = this.usersService.getOperatorEvents(+params.sso);
         this.source.load(data);
+        this.isRetrieving = false;
       }
     });
   }

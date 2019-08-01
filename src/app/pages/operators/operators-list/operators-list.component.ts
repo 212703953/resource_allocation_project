@@ -64,8 +64,20 @@ export class OperatorsListComponent implements OnInit {
         type: 'custom',
         renderComponent: ActionButtonComponent,
         onComponentInitFunction: (instance) => {
-          instance.goToCapabilities.subscribe(sso => {
+          instance.goToPage.subscribe(sso => {
             this.router.navigate(['/pages', 'operators-capabilities', sso]);
+          });
+        },
+        editable: false,
+        addable: false
+      },
+      ssoForRoute2: {
+        title: "Events",
+        type: 'custom',
+        renderComponent: ActionButtonComponent,
+        onComponentInitFunction: (instance) => {
+          instance.goToPage.subscribe(sso => {
+            this.router.navigate(['/pages', 'operators-events', sso]);
           });
         },
         editable: false,
@@ -80,8 +92,8 @@ export class OperatorsListComponent implements OnInit {
       .getOperators()
       .subscribe(data => {
         this.source.load(data.map((o: any) => ({ ...o, ssoForRoute: o.sso })));
-      });
-
+        //this.source.load(data.map((o:any)=>({...o,ssoForRoute2:o.sso})));
+      });      
   }
 
   ngOnInit() { }
