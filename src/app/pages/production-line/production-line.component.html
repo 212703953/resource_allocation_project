@@ -1,6 +1,6 @@
 <br>  
 <h3>
-    Requirements
+    Production Line
 
 <br><br>
 <div class="row">
@@ -12,19 +12,19 @@
         Factory
     </button>
 
-    <button class="btn btn-primary pull-right" (click)="getProdLine()">
+    <!-- <button class="btn btn-primary pull-right" (click)="getProdLine()">
         Prod Line
     </button>
     <button class="btn btn-primary pull-right" (click)="getOperation()">
         Operation
-    </button>         
+    </button>          -->
 </div>
 
 <br>
 
 <nb-card>
   <nb-card-header>
-    Requirements
+    Production Lines
   </nb-card-header>
   <nb-card-body>
     <ng2-smart-table [settings]="settings" [source]="source" (createConfirm)="onConfirmSave($event)"

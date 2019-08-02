@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { Requirement } from '../../models';
-import { RequirementService } from '../../@core/mock/requirement.service';
+import { ProductionLine } from '../../models';
+import { ProductionLineService } from '../../@core/mock/production-line.service';
 import { LocalDataSource } from 'ng2-smart-table';
 import { ActionButtonComponent } from '../../@theme/components';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'ngx-requirements',
-  templateUrl: './requirements.component.html',
-  styleUrls : ['requirements.component.scss']
+  selector: 'ngx-production-line',
+  templateUrl: './production-line.component.html',
+  styleUrls : ['production-line.component.scss']
 })
 
-export class RequirementsComponent implements OnInit  {
+export class ProductionLineComponent implements OnInit  {
 
-  public requirements : Requirement[];
+  public productionLines : ProductionLine[];
   source : LocalDataSource;
 
   settings = {
@@ -40,10 +40,10 @@ export class RequirementsComponent implements OnInit  {
         addable: false,
       },
       name: {
-        title: 'Requirement',
+        title: 'Production Line',
       },
-      type: {
-        title: 'Type',
+      factory: {
+        title: 'Factory',
       },
       // idForRoute: {
       //   title: "Requirements",
@@ -60,23 +60,23 @@ export class RequirementsComponent implements OnInit  {
     },
   };
 
-  constructor(private requirementService: RequirementService, private router: Router) {
+  constructor(private productionLineService: ProductionLineService, private router: Router) {
     this.source = new LocalDataSource();
-    this.requirementService
-      .getRequirements()
+    this.productionLineService
+      .getProductionLines()
       .subscribe(data => {
        this.source.load(data.map((o: any) => ({ ...o, idForRoute: o.id })));
       });   
     };
   ngOnInit(){
-    this.requirementService
-    .getRequirements()
-    .subscribe(requirements => (this.requirements = requirements));
+    this.productionLineService
+    .getProductionLines()
+    .subscribe(productionLines => (this.productionLines = productionLines));
   }
   getSubbusiness(){}
   getFactory(){}
   getOperation(){}
-  getProdline(){}
+  //getProdline(){}
   deleteRequirement(id:number){}
   editRequirement(){}
 }

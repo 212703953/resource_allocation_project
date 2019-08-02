@@ -19,18 +19,21 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: "/pages/sub-business",
     home: false,
   },
+
   {
     title: "Factory",
     icon: "nb-plus",
     link: "/pages/factory",
     home: false,
-    // children: [
-    //   {
-    //     title: "List",
-    //     link: "/pages/operators-list",
-    //   },
-    // ],
   },
+
+  {
+    title: "Production Line",
+    icon: "nb-plus",
+    link: "/pages/production-line",
+    home: false,
+  },
+
   {
     title: "Operators",
     icon: "nb-person",

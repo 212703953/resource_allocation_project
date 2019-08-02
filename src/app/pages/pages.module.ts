@@ -15,6 +15,7 @@ import { SubBusinessModule } from './sub-business/sub-business.module';
 import { RequirementsModule } from './requirements/requirements.module';
 import { TasksModule } from './tasks/tasks.module';
 import { OperationsModule } from './operations/operations.module';
+import { ProductionLineModule } from './production-line/production-line.module'
 
 const PAGES_COMPONENTS = [PagesComponent];
 
@@ -27,6 +28,7 @@ const PAGES_COMPONENTS = [PagesComponent];
     ScheduleFactoryModule,
     OperationsModule,
     TasksModule,
+    ProductionLineModule,
     RequirementsModule,
     FactoryModule,
     SubBusinessModule,
