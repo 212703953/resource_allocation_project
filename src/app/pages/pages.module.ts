@@ -14,6 +14,7 @@ import { FactoryModule } from './factory/factory.module';
 import { SubBusinessModule } from './sub-business/sub-business.module';
 import { RequirementsModule } from './requirements/requirements.module';
 import { TasksModule } from './tasks/tasks.module';
+import { OperationsModule } from './operations/operations.module';
 
 const PAGES_COMPONENTS = [PagesComponent];
 
@@ -24,6 +25,7 @@ const PAGES_COMPONENTS = [PagesComponent];
     DashboardModule,
     OperatorsModule,
     ScheduleFactoryModule,
+    OperationsModule,
     TasksModule,
     RequirementsModule,
     FactoryModule,

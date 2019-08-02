@@ -12,6 +12,7 @@ import { RequirementsComponent } from './requirements/requirements.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { OperatorsCapabilitiesComponent } from './operators/operators-capabilities/operators-capabilities.component';
 import { OperatorsEventsComponent } from './operators/operators-events/operators-events.component';
+import { OperationsComponent } from './operations/operations.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,12 @@ const routes: Routes = [
         path: "operators-events/:sso",
         component: OperatorsEventsComponent,
       },
+
+      {
+        path: "operations",
+        component: OperationsComponent,
+      },
+
       {
         path: "tasks",
         component: TasksComponent,

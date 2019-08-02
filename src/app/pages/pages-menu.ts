@@ -37,6 +37,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: "/pages/operators-list",
     home: false,
   },
+
+  {
+    title: "Operations",
+    icon: "nb-chevron-right",
+    link: "/pages/operations",
+    home: false,
+  },
+
   {
     title: "Tasks",
     icon: "nb-chevron-right",
