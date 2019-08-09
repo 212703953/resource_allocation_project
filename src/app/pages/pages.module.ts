@@ -11,7 +11,7 @@ import { CalendarHeaderComponent } from "./calendar-header.component";
 
 import { CalendarModule } from "angular-calendar";
 import { FactoryModule } from './factory/factory.module';
-import { SubBusinessModule } from './sub-business/sub-business.module';
+import { SubBusinessModule } from './subbusiness/subbusiness.module';
 import { RequirementsModule } from './requirements/requirements.module';
 import { TasksModule } from './tasks/tasks.module';
 import { OperationsModule } from './operations/operations.module';

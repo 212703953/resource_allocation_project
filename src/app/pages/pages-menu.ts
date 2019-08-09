@@ -14,9 +14,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
     home: false,
   },
   {
-    title: "Sub-business",
+    title: "subbusiness",
     icon: "nb-plus",
-    link: "/pages/sub-business",
+    link: "/pages/subbusiness",
     home: false,
   },
 

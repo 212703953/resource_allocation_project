@@ -7,7 +7,7 @@ import { OperatorsListComponent } from "./operators/operators-list/operators-lis
 import { OperatorsScheduleComponent } from "./operators/operators-schedule/operators-schedule.component";
 import { ScheduleFactoryComponent } from "./scheduleFactory/scheduleFactory.component";
 import { FactoryComponent } from "./factory/factory.component";
-import { SubBusinessComponent } from "./sub-business/sub-business.component";
+import { SubBusinessComponent } from "./subbusiness/subbusiness.component";
 import { RequirementsComponent } from './requirements/requirements.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { OperatorsCapabilitiesComponent } from './operators/operators-capabilities/operators-capabilities.component';
@@ -74,7 +74,7 @@ const routes: Routes = [
         component: ProductionLineComponent,
       },
       {
-        path: "sub-business",
+        path: "subbusiness",
         component: SubBusinessComponent,
       },
       {
