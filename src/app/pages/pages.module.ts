@@ -10,6 +10,12 @@ import { MiscellaneousModule } from "./miscellaneous/miscellaneous.module";
 import { CalendarHeaderComponent } from "./calendar-header.component";
 
 import { CalendarModule } from "angular-calendar";
+import { FactoryModule } from './factory/factory.module';
+import { SubBusinessModule } from './subbusiness/subbusiness.module';
+import { RequirementsModule } from './requirements/requirements.module';
+import { TasksModule } from './tasks/tasks.module';
+import { OperationsModule } from './operations/operations.module';
+import { ProductionLineModule } from './production-line/production-line.module'
 
 const PAGES_COMPONENTS = [PagesComponent];
 
@@ -20,6 +26,12 @@ const PAGES_COMPONENTS = [PagesComponent];
     DashboardModule,
     OperatorsModule,
     ScheduleFactoryModule,
+    OperationsModule,
+    TasksModule,
+    ProductionLineModule,
+    RequirementsModule,
+    FactoryModule,
+    SubBusinessModule,
     CalendarModule,
     MiscellaneousModule,
   ],

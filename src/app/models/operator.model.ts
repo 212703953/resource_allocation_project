@@ -1,3 +1,6 @@
+import { OperatorCapability } from '.';
+import { OperatorEvent } from '.';
+
 export class Operator {
   public id: number;
   public lastName: string;
@@ -7,6 +10,6 @@ export class Operator {
   public shift: string;
   public contractType: string;
   public sso: number;
-  public sap: number;
-  public position: string;
+  public capabilities: OperatorCapability[];
+  public events: OperatorEvent[];
 }

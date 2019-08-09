@@ -1,0 +1,12 @@
+<nb-card *ngIf="!isRetrieving">
+  <nb-card-header>
+    <h3>Operator Capabilities</h3>
+    <p>{{operator.firstName + ' ' + operator.lastName}}</p>
+  </nb-card-header>
+
+  <nb-card-body>
+    <ng2-smart-table [settings]="settings" [source]="source" (createConfirm)="onConfirmSave($event)"
+      (editConfirm)="onEditConfirm($event)" (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>

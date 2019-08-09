@@ -1,7 +1,7 @@
 import { of as observableOf, Observable } from "rxjs";
 import { Injectable } from "@angular/core";
 import { Contacts, RecentUsers, UserData } from "../data/users";
-import { Operator } from "../../models";
+import { Operator, OperatorCapability, OperatorEvent } from "../../models";
 
 @Injectable()
 export class UserService {
@@ -13,27 +13,29 @@ export class UserService {
       lastName: "Mixtur",
       contractType: "permanent",
       manager: "Fabio Jordao",
-      position: "DTLP",
-      sap: 212703953,
       scope: "Office",
       shift: "Office Hours",
       sso: 212703953,
+      events:[],
+      capabilities:[]
     },
+
     {
       id: 2,
       firstName: "Amina",
       lastName: "Djeldjel",
       contractType: "Intern",
       manager: "Fabio Jordao",
-      position: "DTLP Intern",
-      sap: 212752335,
       scope: "Remote",
       shift: "Office Hours",
       sso: 212752335,
+      events:[],
+      capabilities:[],
     },
   ];
 
   private operator: Operator;
+
 
   private user = {
     name: "User",
@@ -72,4 +74,13 @@ export class UserService {
   getOperatorBySso(sso: number): Operator {
     return this.operators.find(x => x.sso === sso);
   }
+
+  getOperatorCapabilities(sso:number):OperatorCapability[]{
+    return this.operators.find(x=>x.sso===sso).capabilities;
+  }
+
+  getOperatorEvents(sso:number):OperatorEvent[]{
+    return this.operators.find(x=>x.sso===sso).events;
+  }
+
 }

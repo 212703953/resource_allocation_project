@@ -8,19 +8,50 @@ export const MENU_ITEMS: NbMenuItem[] = [
     home: true,
   },
   {
-    title: "Operators",
-    icon: "nb-person",
-    children: [
-      {
-        title: "List",
-        link: "/pages/operators-list",
-      },
-    ],
-  },
-  {
     title: "Factory Schedule",
     icon: "nb-gear",
     link: "/pages/scheduleFactory",
+    home: false,
+  },
+  {
+    title: "subbusiness",
+    icon: "nb-plus",
+    link: "/pages/subbusiness",
+    home: false,
+  },
+
+  {
+    title: "Factory",
+    icon: "nb-plus",
+    link: "/pages/factory",
+    home: false,
+  },
+
+  {
+    title: "Production Line",
+    icon: "nb-plus",
+    link: "/pages/production-line",
+    home: false,
+  },
+
+  {
+    title: "Operators",
+    icon: "nb-person",
+    link: "/pages/operators-list",
+    home: false,
+  },
+
+  {
+    title: "Operations",
+    icon: "nb-chevron-right",
+    link: "/pages/operations",
+    home: false,
+  },
+
+  {
+    title: "Tasks",
+    icon: "nb-chevron-right",
+    link: "/pages/tasks",
     home: false,
     // children: [
     //   {
@@ -29,6 +60,20 @@ export const MENU_ITEMS: NbMenuItem[] = [
     //   },
     // ],
   },
+  {
+    title: "Requirements",
+    icon: "nb-checkmark",
+    link: "/pages/requirements",
+    home: false,
+    // children: [
+    //   {
+    //     title: "List",
+    //     link: "/pages/operators-list",
+    //   },
+    // ],
+  },
+
+
   // {
   //   title: "FEATURES",
   //   group: true,

@@ -6,6 +6,14 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { OperatorsListComponent } from "./operators/operators-list/operators-list.component";
 import { OperatorsScheduleComponent } from "./operators/operators-schedule/operators-schedule.component";
 import { ScheduleFactoryComponent } from "./scheduleFactory/scheduleFactory.component";
+import { FactoryComponent } from "./factory/factory.component";
+import { SubBusinessComponent } from "./subbusiness/subbusiness.component";
+import { RequirementsComponent } from './requirements/requirements.component';
+import { TasksComponent } from './tasks/tasks.component';
+import { OperatorsCapabilitiesComponent } from './operators/operators-capabilities/operators-capabilities.component';
+import { OperatorsEventsComponent } from './operators/operators-events/operators-events.component';
+import { OperationsComponent } from './operations/operations.component';
+import { ProductionLineComponent } from './production-line/production-line.component';
 
 const routes: Routes = [
   {
@@ -17,8 +25,8 @@ const routes: Routes = [
         component: DashboardComponent,
       },
       {
-        path : "scheduleFactory",
-        component : ScheduleFactoryComponent,
+        path: "scheduleFactory",
+        component: ScheduleFactoryComponent,
       },
       {
         path: "operators-list",
@@ -27,6 +35,47 @@ const routes: Routes = [
       {
         path: "operators-schedule/:sso",
         component: OperatorsScheduleComponent,
+      },
+      {
+        path: "operators-capabilities/:sso",
+        component: OperatorsCapabilitiesComponent,
+      },
+      {
+        path: "operators-events/:sso",
+        component: OperatorsEventsComponent,
+      },
+
+      {
+        path: "operations",
+        component: OperationsComponent,
+      },
+
+      {
+        path: "tasks",
+        component: TasksComponent,
+      },
+
+      {
+        path: "task/:id/requirements",
+        component: RequirementsComponent,
+      },
+
+      {
+        path: "requirements",
+        component: RequirementsComponent,
+      },
+      {
+        path: "factory",
+        component: FactoryComponent,
+      },
+
+      {
+        path: "production line",
+        component: ProductionLineComponent,
+      },
+      {
+        path: "subbusiness",
+        component: SubBusinessComponent,
       },
       {
         path: "",
@@ -41,4 +90,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class PagesRoutingModule {}
+export class PagesRoutingModule { }
