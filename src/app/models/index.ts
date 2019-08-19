@@ -6,3 +6,4 @@ export * from "./operator-capability.model";
 export * from "./operator-event.model";
 export * from "./operation.model";
 export * from "./production-line.model";
+export * from "./sub-business.model";

@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'ngx-production-line',
   templateUrl: './production-line.component.html',
-  styleUrls : ['production-line.component.scss']
+  styleUrls : ['production-line.component.scss'],
+  providers: [ProductionLineService]
 })
 
 export class ProductionLineComponent implements OnInit  {

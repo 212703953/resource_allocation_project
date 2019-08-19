@@ -1,6 +1,5 @@
 //import{ Factory } from "."
-export class ProductionLine{
+export class SubBusiness{
     public id:number;
     public name:string;
-    public factory:string;
 }

@@ -70,7 +70,7 @@ const routes: Routes = [
       },
 
       {
-        path: "production line",
+        path: "production-line",
         component: ProductionLineComponent,
       },
       {

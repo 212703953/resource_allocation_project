@@ -1,5 +1,19 @@
-<div class="row">
-    <nb-card>
-      <nb-card-body>[Placeholder]</nb-card-body>
-    </nb-card>
-  </div>
+<br>  
+<h3>
+    Sub Business
+
+<br><br>
+
+
+<br>
+
+<nb-card>
+  <nb-card-header>
+    Sub Businesses
+  </nb-card-header>
+  <nb-card-body>
+    <ng2-smart-table [settings]="settings" [source]="source" (createConfirm)="onConfirmSave($event)"
+      (editConfirm)="onEditConfirm($event)" (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>
