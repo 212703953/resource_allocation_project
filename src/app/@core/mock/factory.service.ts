@@ -1,36 +1,19 @@
 import { of as observableOf, Observable } from "rxjs";
 import { Injectable } from "@angular/core";
-import { Factory } from "../../models"
+import { Factory } from "../../models";
+import {HttpClient } from "@angular/common/http";
+
 
 @Injectable()
 export class FactoryService {
-  public factories: Factory[] = [
-    {
-      id: 1,
-      name: "Salzbergen",
-      business: "Onshore Wind",
-      shift1: "True",
-      shift2: "True",
-      shift3: "False",
-    },
-    {
-        id: 2,
-        name: "Saint-Nazaire",
-        business: "Offshore Wind",
-        shift1: "True",
-        shift2: "False",
-        shift3: "True",
-    },
-  ];
+  constructor (private http: HttpClient) {}
+ 
 
   private factory : Factory;
 
   getFactories(): Observable<Factory[]> {
-    return observableOf(this.factories);
+    return this.http.get<Factory[]>('${http://localhost:3000}/factories');
   }
 
-  getFactoryById(id: number): Factory {
-    return this.factories.find(x => x.id === id);
-  }
 
 }
