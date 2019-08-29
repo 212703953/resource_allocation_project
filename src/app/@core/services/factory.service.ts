@@ -13,4 +13,8 @@ export class FactoryService {
   getFactories(): Observable<Factory[]> {
     return this.http.get<Factory[]>(`${environment.apiUrl}/factories`);
   }
+
+  createFactory(factory: Factory): Observable<number> {
+    return this.http.post<number>(`${environment.apiUrl}/factories`, factory);
+  }
 }
