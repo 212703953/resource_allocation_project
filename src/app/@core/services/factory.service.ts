@@ -18,7 +18,7 @@ export class FactoryService {
     return this.http.post<number>(`${environment.apiUrl}/factory`, factory);
   }
 
-  updateFactory(factory: Factory): Observable<number> {
-    return this.http.put<number>(`${environment.apiUrl}/factory`, factory);
+  updateFactory(factory: Factory): Observable<Factory> {
+    return this.http.put<Factory>(`${environment.apiUrl}/factory`, factory);
   }
 }

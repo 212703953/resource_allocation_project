@@ -72,7 +72,7 @@ export class FactoryComponent implements OnInit {
     });
   }
 
-  onEditConfirm(event, factory:Factory) {
+  onEditConfirm(event, factory: Factory) {
     // Send to API to edit the record and then resolve
    // event.confirm.resolve(event.newData);
    this.factoryService.updateFactory(factory).subscribe((res) => {
