@@ -59,6 +59,7 @@ export class FactoryComponent implements OnInit {
 
     this.factoryService.getFactories().subscribe((data) => {
       this.source.load(data);
+  
     });
   }
 
@@ -71,9 +72,12 @@ export class FactoryComponent implements OnInit {
     });
   }
 
-  onEditConfirm(event) {
+  onEditConfirm(event, factory:Factory) {
     // Send to API to edit the record and then resolve
-    event.confirm.resolve(event.newData);
+   // event.confirm.resolve(event.newData);
+   this.factoryService.updateFactory(factory).subscribe((res) => {
+    event.confirm.resolve(factory);
+  });
   }
 
   onDeleteConfirm(event): void {
