@@ -18,9 +18,9 @@ var Factory = {
     );
   },
 
-  deletefactory: function(factory,callback){
+  deletefactory: function(id,callback){
     return db.query(
-      "Delete from factory where id=?", [factory.id],
+      "Delete from factory where id=?", [id],
       callback,
     );
   }

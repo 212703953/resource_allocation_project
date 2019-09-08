@@ -59,7 +59,6 @@ export class FactoryComponent implements OnInit {
 
     this.factoryService.getFactories().subscribe((data) => {
       this.source.load(data);
-  
     });
   }
 
@@ -85,7 +84,7 @@ export class FactoryComponent implements OnInit {
     if (window.confirm("Are you sure you want to delete?")) {
       // Send to API to remove and then resolve
       //const factory : Factory=event.newData;
-      const id : number = event.newData;
+      const id : number = event.data.id;
       this.factoryService.deleteFactory(id).subscribe((res)=>{
         event.confirm.resolve(id);
       })
