@@ -23,6 +23,6 @@ export class FactoryService {
   }
 
   deleteFactory(id:number): Observable<void> {
-    return this.http.delete<void>(`${environment.apiUrl}/factory`);
+    return this.http.delete<void>(`${environment.apiUrl}/factory/${id}`);
   }
 }

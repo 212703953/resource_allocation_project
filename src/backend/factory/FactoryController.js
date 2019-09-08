@@ -43,12 +43,12 @@ router.put("/", function(req, res) {
   });
 });
 
-router.delete("/", function(req, res) {
-  Factory.deletefactory(req.body, function(err, count) {
+router.delete("/:id", function(req, res) {
+  Factory.deletefactory(req.params.id, function(err, count) {
     if (err) {
       res.status(400).json(err);
     } else {
-      res.json(req.body);
+      res.json(req.params.id);
     }
   });
 

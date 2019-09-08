@@ -87,7 +87,7 @@ export class FactoryComponent implements OnInit {
       //const factory : Factory=event.newData;
       const id : number = event.newData;
       this.factoryService.deleteFactory(id).subscribe((res)=>{
-        event.confirm.resolve();
+        event.confirm.resolve(id);
       })
       
     } else {
