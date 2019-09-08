@@ -16,6 +16,13 @@ var Factory = {
       "Update factory set name=?, subbusiness=?, shift1=?, shift2=?, shift3=? where id=?",   [factory.name, factory.business, factory.shift1, factory.shift2, factory.shift3, factory.id],
       callback,
     );
+  },
+
+  deletefactory: function(factory,callback){
+    return db.query(
+      "Delete from factory where id=?", [factory.id],
+      callback,
+    );
   }
 };
 

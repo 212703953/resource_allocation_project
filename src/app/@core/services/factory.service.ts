@@ -21,4 +21,8 @@ export class FactoryService {
   updateFactory(factory: Factory): Observable<Factory> {
     return this.http.put<Factory>(`${environment.apiUrl}/factory`, factory);
   }
+
+  deleteFactory(id:number): Observable<void> {
+    return this.http.delete<void>(`${environment.apiUrl}/factory`);
+  }
 }

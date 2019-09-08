@@ -72,9 +72,10 @@ export class FactoryComponent implements OnInit {
     });
   }
 
-  onEditConfirm(event, factory: Factory) {
+  onEditConfirm(event) {
     // Send to API to edit the record and then resolve
    // event.confirm.resolve(event.newData);
+  const factory : Factory = event.newData;
    this.factoryService.updateFactory(factory).subscribe((res) => {
     event.confirm.resolve(factory);
   });
@@ -83,7 +84,12 @@ export class FactoryComponent implements OnInit {
   onDeleteConfirm(event): void {
     if (window.confirm("Are you sure you want to delete?")) {
       // Send to API to remove and then resolve
-      event.confirm.resolve();
+      //const factory : Factory=event.newData;
+      const id : number = event.newData;
+      this.factoryService.deleteFactory(id).subscribe((res)=>{
+        event.confirm.resolve();
+      })
+      
     } else {
       event.confirm.reject();
     }
