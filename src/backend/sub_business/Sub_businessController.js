@@ -5,26 +5,24 @@ var router = express.Router();
 var bodyParser = require("body-parser");
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
-var Factory = require("./Factory");
+var Sub_business = require("./Sub_business");
 
 router.get("/", function(req, res) {
-  Factory.getfactories(function(err, rows) {
+  Factory.getsub_businesses(function(err, rows) {
     if (err) {
       res.status(400).json(err);
     } else {
-      for (const r of rows) {
-        r["factory_id"]=r.factory_id;
-        delete r.factory_id;
-        //r["business"] = r.subbusiness;
+      //for (const r of rows) {
+       // r["business"] = r.subbusiness;
         //delete r.subbusiness;
-      }
+      //}
       res.json(rows);
     }
   });
 });
 
 router.post("/", function(req, res) {
-  Factory.createfactory(req.body, function(err, count) {
+  Factory.createsub_business(req.body, function(err, count) {
     if (err) {
       res.status(400).json(err);
     } else {
@@ -34,7 +32,7 @@ router.post("/", function(req, res) {
 });
 
 router.put("/", function(req, res) {
-  Factory.updatefactory(req.body, function(err, count) {
+  Factory.updatesub_business(req.body, function(err, count) {
     if (err) {
       res.status(400).json(err);
     } else {
@@ -44,7 +42,7 @@ router.put("/", function(req, res) {
 });
 
 router.delete("/:id", function(req, res) {
-  Factory.deletefactory(req.params.id, function(err, count) {
+  Factory.deletesub_business(req.params.id, function(err, count) {
     if (err) {
       res.status(400).json(err);
     } else {
