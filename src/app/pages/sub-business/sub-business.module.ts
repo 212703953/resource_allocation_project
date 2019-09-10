@@ -4,7 +4,7 @@ import { SubBusinessComponent } from "./sub-business.component";
 import { NbDialogModule } from '@nebular/theme';
 import { NgbModalModule } from "@ng-bootstrap/ng-bootstrap";
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-import { SubBusinessService } from '../../@core/mock/sub-business.service';
+import { SubBusinessService } from '../../@core/services/sub-business.service';
 
 @NgModule({
   imports: [

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SubBusiness } from '../../models';
-import { SubBusinessService } from '../../@core/mock/sub-business.service';
+import { SubBusinessService } from '../../@core/services/sub-business.service';
 import { LocalDataSource } from 'ng2-smart-table';
 import { ActionButtonComponent } from '../../@theme/components';
 import { Router } from '@angular/router';
@@ -43,39 +43,48 @@ export class SubBusinessComponent implements OnInit  {
       name: {
         title: 'Sub Business',
       },
-      
-      // idForRoute: {
-      //   title: "Requirements",
-      //   type: 'custom',
-      //   renderComponent: ActionButtonComponent,
-      //   onComponentInitFunction: (instance) => {
-      //     instance.goToPage.subscribe(id => {
-      //       this.router.navigate(['/pages', 'task',id,'requirements']);
-      //     });
-      //   },
-      //   editable: false,
-      //   addable: false
-      // },
     },
   };
 
+  ngOnInit(){}
+
   constructor(private subBusinessService: SubBusinessService, private router: Router) {
     this.source = new LocalDataSource();
-    this.subBusinessService
-      .getSubBusinesses()
-      .subscribe(data => {
-       this.source.load(data.map((o: any) => ({ ...o, idForRoute: o.id })));
-      });   
-    };
-  ngOnInit(){
-    this.subBusinessService
-    .getSubBusinesses()
-    .subscribe(subBusinesses => (this.subBusinesses = subBusinesses));
-  }
-  getSubbusiness(){}
-  getFactory(){}
-  getOperation(){}
-  //getProdline(){}
-  deleteRequirement(id:number){}
-  editRequirement(){}
-}
+    this.subBusinessService.getSubBusinesses().subscribe((data) => {
+      this.source.load(data);
+      });    
+    }
+
+    async onConfirmSave(event) {
+      const subbusiness: SubBusiness = event.newData;
+      subbusiness.id = Math.max(...(await this.source.getAll()).map((x) => x.id)) + 1;
+      // Send to API to save record and the resolve
+      this.subBusinessService.createSubBusiness(subbusiness).subscribe((res) => {
+        event.confirm.resolve(subbusiness);
+      });
+    }
+  
+    onEditConfirm(event) {
+      // Send to API to edit the record and then resolve
+     // event.confirm.resolve(event.newData);
+    const subbusiness : SubBusiness = event.newData;
+     this.subBusinessService.updateSubBusiness(subbusiness).subscribe((res) => {
+      event.confirm.resolve(subbusiness);
+    });
+    }
+  
+    onDeleteConfirm(event): void {
+      if (window.confirm("Are you sure you want to delete?")) {
+        // Send to API to remove and then resolve
+        //const subbusiness : SubBusiness=event.newData;
+        const id : number = event.data.id;
+        this.subBusinessService.deleteSubBusiness(id).subscribe((res)=>{
+          event.confirm.resolve(id);
+        })
+        
+      } else {
+        event.confirm.reject();
+      }
+    }
+}   
+
