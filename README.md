@@ -27,3 +27,6 @@ Angular: https://angular.io/guide/setup-local
 
 Cmd TBD
 
+
+Don't forget to launch MySql80 service
+
