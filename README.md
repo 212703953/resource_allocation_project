@@ -39,3 +39,7 @@ NPM RUN NG SERVE
 
 Attendre que le programme lance le code
 
+LANCER LE BACK
+
+src\backend>node server.js
+
