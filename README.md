@@ -30,3 +30,12 @@ Cmd TBD
 
 Don't forget to launch MySql80 service
 
+
+LANCER LE FRONT
+
+NG SERVE
+ou
+NPM RUN NG SERVE
+
+Attendre que le programme lance le code
+
