@@ -4,19 +4,20 @@ import { ProductionLineComponent } from "./production-line.component";
 import { NbDialogModule } from '@nebular/theme';
 import { NgbModalModule } from "@ng-bootstrap/ng-bootstrap";
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-import { ProductionLineService } from '../../@core/mock/production-line.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     ThemeModule,
-    //CommonModule,
-    //FormsModule,
+    CommonModule,
+    FormsModule,
     NgbModalModule,
     Ng2SmartTableModule,
     NbDialogModule.forChild(),
   ],
   declarations: [ProductionLineComponent],
   entryComponents: [],
-  providers: [ProductionLineService],
+  providers: [],
 })
 export class ProductionLineModule {}
