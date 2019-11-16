@@ -6,33 +6,7 @@ import { Operator, OperatorCapability, OperatorEvent } from "../../models";
 @Injectable()
 export class UserService {
   private time: Date = new Date();
-  public operators: Operator[] = [
-    {
-      id: 1,
-      firstName: "Vianney",
-      lastName: "Mixtur",
-      contractType: "permanent",
-      manager: "Fabio Jordao",
-      scope: "Office",
-      shift: "Office Hours",
-      sso: 212703953,
-      events:[],
-      capabilities:[]
-    },
-
-    {
-      id: 2,
-      firstName: "Amina",
-      lastName: "Djeldjel",
-      contractType: "Intern",
-      manager: "Fabio Jordao",
-      scope: "Remote",
-      shift: "Office Hours",
-      sso: 212752335,
-      events:[],
-      capabilities:[],
-    },
-  ];
+  
 
   private operator: Operator;
 
@@ -65,22 +39,6 @@ export class UserService {
 
   getRecentUsers(): Observable<RecentUsers[]> {
     return observableOf(this.recentUsers);
-  }
-
-  getOperators(): Observable<Operator[]> {
-    return observableOf(this.operators);
-  }
-
-  getOperatorBySso(sso: number): Operator {
-    return this.operators.find(x => x.sso === sso);
-  }
-
-  getOperatorCapabilities(sso:number):OperatorCapability[]{
-    return this.operators.find(x=>x.sso===sso).capabilities;
-  }
-
-  getOperatorEvents(sso:number):OperatorEvent[]{
-    return this.operators.find(x=>x.sso===sso).events;
   }
 
 }

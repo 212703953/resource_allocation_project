@@ -48,18 +48,6 @@ export class OperatorsListComponent implements OnInit {
         title: 'Last Name',
       },
 
-      // shift: {
-      //   title: 'Shift'
-      // },
-      // scope: {
-      //   title: 'Scope',
-      // },
-      // manager: {
-      //   title: 'Manager',
-      // },
-      // contractType: {
-      //   title: "Contract Type"
-      //},
       ssoForRoute: {
         title: "Capabilities",
         type: 'custom',
