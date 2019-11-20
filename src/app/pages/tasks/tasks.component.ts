@@ -28,8 +28,7 @@ export class TasksComponent implements OnInit  {
 import { Component, OnInit, ComponentFactoryResolver } from "@angular/core";
 //import { Operator, Factory } from "../../models";
 import { Task } from "../../models";
-import { Factory } from "../../models";
-import { TaskService } from "../../@core/mock/task.service";
+import { TaskService } from "../../@core/services/task.service";
 import { LocalDataSource } from 'ng2-smart-table';
 import { ActionButtonComponent } from '../../@theme/components';
 import { Router } from '@angular/router';
@@ -37,7 +36,9 @@ import { Router } from '@angular/router';
 @Component({
   selector: "ngx-tasks",
   templateUrl: "tasks.component.html",
-  styleUrls: ["tasks.component.scss"]
+  styleUrls: ["tasks.component.scss"],
+  providers: [TaskService]
+
 })
 export class TasksComponent implements OnInit {
 
@@ -67,7 +68,7 @@ export class TasksComponent implements OnInit {
         editable: false,
         addable: false,
       },
-      Name: {
+      name: {
         title: 'Task Title',
       },
       idForRoute: {
@@ -87,32 +88,40 @@ export class TasksComponent implements OnInit {
 
   constructor(private taskService: TaskService, private router: Router) {
     this.source = new LocalDataSource();
-    this.taskService
-      .getTasks()
-      .subscribe(data => {
-        this.source.load(data.map((o: any) => ({ ...o, idForRoute: o.id })));
-        //this.source.load(data.map((o:any)=>({...o,ssoForRoute2:o.sso})));
+    this.taskService.getTasks().subscribe((data) => {
+      this.source.load(data);
       });      
   }
 
   ngOnInit() { }
 
   async onConfirmSave(event) {
-    let factory: Factory = event.newData;
-    factory.id = Math.max(...(await this.source.getAll()).map(x => x.id)) + 1;
+    let task: Task = event.newData;
+    task.id = Math.max(...(await this.source.getAll()).map(x => x.id)) + 1;
     // Send to API to save record and the resolve
-    event.confirm.resolve(factory);
+    this.taskService.createTask(task).subscribe((res) => {
+      event.confirm.resolve(task);
+    });
   }
 
   onEditConfirm(event) {
     // Send to API to edit the record and then resolve
-    event.confirm.resolve(event.newData);
+    //event.confirm.resolve(event.newData);
+    const task : Task = event.newData;
+     this.taskService.updateTask(task).subscribe((res) => {
+      event.confirm.resolve(task);
+    });
   }
 
   onDeleteConfirm(event): void {
-    if (window.confirm('Are you sure you want to delete?')) {
+    if (window.confirm("Are you sure you want to delete?")) {
       // Send to API to remove and then resolve
-      event.confirm.resolve();
+      //const subbusiness : SubBusiness=event.newData;
+      const id : number = event.data.id;
+      this.taskService.deleteTask(id).subscribe((res)=>{
+        event.confirm.resolve(id);
+      })
+      
     } else {
       event.confirm.reject();
     }

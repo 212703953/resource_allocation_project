@@ -6,6 +6,7 @@ import { OperationsComponent } from "./operations.component";
 import { NbDialogModule } from '@nebular/theme';
 import { NgbModalModule } from "@ng-bootstrap/ng-bootstrap";
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { OperationService } from '../../@core/services/operation.service';
 
 @NgModule({
   imports: [
@@ -17,5 +18,7 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
     NbDialogModule.forChild(),
   ],
   declarations: [OperationsComponent],
+  entryComponents: [],
+  providers: [OperationService],
 })
 export class OperationsModule {}

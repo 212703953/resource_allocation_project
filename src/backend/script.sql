@@ -28,13 +28,13 @@ ENGINE = InnoDB;
 -- Table `resource_allocation`.`factory`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `resource_allocation`.`factory` (
-  `factory_ id` INT NOT NULL AUTO_INCREMENT,
+  `factory_id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   `sub_business_id` INT NOT NULL,
   `shift1` TINYINT NULL,
   `shift2` TINYINT NULL,
   `shift3` TINYINT NULL,
-  PRIMARY KEY (`factory_ id`),
+  PRIMARY KEY (`factory_id`),
   CONSTRAINT `fk_factory_sub_business1`
     FOREIGN KEY (`sub_business_id`)
     REFERENCES `resource_allocation`.`sub_business` (`sub_business_id`)
@@ -109,12 +109,12 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `resource_allocation`.`factory_to_prod` (
   `factory_to_prod_id` INT NOT NULL AUTO_INCREMENT,
-  `factory_ id` INT NOT NULL,
+  `factory_id` INT NOT NULL,
   `production_line_id` INT NOT NULL,
   PRIMARY KEY (`factory_to_prod_id`),
   CONSTRAINT `fk_factory_prod_factory1`
-    FOREIGN KEY (`factory_ id`)
-    REFERENCES `resource_allocation`.`factory` (`factory_ id`)
+    FOREIGN KEY (`factory_id`)
+    REFERENCES `resource_allocation`.`factory` (`factory_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_factory_prod_production_line1`

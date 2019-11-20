@@ -8,8 +8,8 @@ export class RequirementService {
     {
       id: 1,
       name: "Induction",
-      type: "Training",
-      task: "Get access to the shopfloor",
+      requirement_type: "Training",
+      //task: "Get access to the shopfloor",
     },
 
   ];

@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Requirement } from '../../models';
-import { RequirementService } from '../../@core/mock/requirement.service';
+import { RequirementService } from '../../@core/services/requirement.service';
 import { LocalDataSource } from 'ng2-smart-table';
-import { ActionButtonComponent } from '../../@theme/components';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-requirements',
   templateUrl: './requirements.component.html',
-  styleUrls : ['requirements.component.scss']
+  styleUrls : ['requirements.component.scss'],
+  providers: [RequirementService]
+
 })
 
 export class RequirementsComponent implements OnInit  {
@@ -39,12 +40,13 @@ export class RequirementsComponent implements OnInit  {
         editable: false,
         addable: false,
       },
+      requirement_type: {
+        title: 'Type',
+      },
       name: {
         title: 'Requirement',
       },
-      type: {
-        title: 'Type',
-      },
+      
       // idForRoute: {
       //   title: "Requirements",
       //   type: 'custom',
@@ -62,21 +64,45 @@ export class RequirementsComponent implements OnInit  {
 
   constructor(private requirementService: RequirementService, private router: Router) {
     this.source = new LocalDataSource();
-    this.requirementService
-      .getRequirements()
-      .subscribe(data => {
-       this.source.load(data.map((o: any) => ({ ...o, idForRoute: o.id })));
-      });   
+    this.requirementService.getRequirements().subscribe((data) => {
+      this.source.load(data);
+    });   
     };
-  ngOnInit(){
-    this.requirementService
-    .getRequirements()
-    .subscribe(requirements => (this.requirements = requirements));
+  ngOnInit(){}
+  //getSubbusiness(){}
+  //getFactory(){}
+  //getOperation(){}
+  //getProdline(){}
+  //deleteRequirement(id:number){}
+  //editRequirement(){}
+  async onConfirmSave(event) {
+    const requirement: Requirement = event.newData;
+    requirement.id = Math.max(...(await this.source.getAll()).map((x) => x.id)) + 1;
+    // Send to API to save record and the resolve
+    this.requirementService.createRequirement(requirement).subscribe((res) => {
+      event.confirm.resolve(requirement);
+    });
   }
-  getSubbusiness(){}
-  getFactory(){}
-  getOperation(){}
-  getProdline(){}
-  deleteRequirement(id:number){}
-  editRequirement(){}
+  onEditConfirm(event) {
+    // Send to API to edit the record and then resolve
+   // event.confirm.resolve(event.newData);
+  const requirement : Requirement = event.newData;
+   this.requirementService.updateRequirement(requirement).subscribe((res) => {
+    event.confirm.resolve(requirement);
+  });
+  }
+
+  onDeleteConfirm(event): void {
+    if (window.confirm("Are you sure you want to delete?")) {
+      // Send to API to remove and then resolve
+      //const factory : Factory=event.newData;
+      const id : number = event.data.id;
+      this.requirementService.deleteRequirement(id).subscribe((res)=>{
+        event.confirm.resolve(id);
+      })
+      
+    } else {
+      event.confirm.reject();
+    }
+  }
 }
