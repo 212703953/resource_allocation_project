@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Operator } from "../../../models";
 import { OperatorCapability } from "../../../models";
-import { UserService } from "../../../@core/mock/users.service";
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { LocalDataSource } from 'ng2-smart-table';
 
@@ -55,17 +54,10 @@ export class OperatorsCapabilitiesComponent implements OnInit {
   };
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      if (params.sso) {
-        this.operator = this.usersService.getOperatorBySso(+params.sso);
-        let data = this.usersService.getOperatorCapabilities(+params.sso);
-        this.source.load(data);
-        this.isRetrieving = false;
-      }
-    });
+
   }
 
-  constructor(private usersService: UserService, private route: ActivatedRoute, ) {
+  constructor(private route: ActivatedRoute, ) {
     this.source = new LocalDataSource();
 
   }

@@ -14,7 +14,7 @@ var Factory = {
   },
   updatefactory: function(factory,callback){
     return db.query(
-      "Update factory set name=?,  shift1=?, shift2=?, shift3=?, sub_business_id=(SELECT sub_business_id FROM sub_business WHERE sub_business.name=?) where factory_id=?",   [factory.name, factory.shift1, factory.shift2, factory.shift3,factory.business, gfactory.id],
+      "Update factory set name=?,  shift1=?, shift2=?, shift3=?, sub_business_id=(SELECT sub_business_id FROM sub_business WHERE sub_business.name=?) where factory_id=?",   [factory.name, factory.shift1, factory.shift2, factory.shift3,factory.business, factory.id],
       callback,
     );
   },

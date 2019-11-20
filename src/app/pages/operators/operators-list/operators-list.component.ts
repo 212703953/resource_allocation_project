@@ -1,6 +1,6 @@
-import { Component, OnInit, ComponentFactoryResolver } from "@angular/core";
-import { Operator, Factory } from "../../../models";
-import { UserService } from "../../../@core/mock/users.service";
+import { Component, OnInit, } from "@angular/core";
+import { Operator,} from "../../../models";
+import {OperatorService} from "../../../@core/services/operator.service"
 import { LocalDataSource } from 'ng2-smart-table';
 import { ActionButtonComponent } from '../../../@theme/components';
 import { Router } from '@angular/router';
@@ -39,26 +39,15 @@ export class OperatorsListComponent implements OnInit {
         addable: false,
       },
       sso: {
-        title: 'Sso',
+        title: 'SSO',
       },
-      firstName: {
+      first_name: {
         title: 'First Name',
       },
-      lastName: {
+      last_name: {
         title: 'Last Name',
       },
-      scope: {
-        title: 'Scope',
-      },
-      manager: {
-        title: 'Manager',
-      },
-      shift: {
-        title: 'Shift'
-      },
-      contractType: {
-        title: "Contract Type"
-      },
+
       ssoForRoute: {
         title: "Capabilities",
         type: 'custom',
@@ -86,34 +75,43 @@ export class OperatorsListComponent implements OnInit {
     },
   };
 
-  constructor(private usersService: UserService, private router: Router) {
+  ngOnInit() {}
+
+  constructor(private operatorService: OperatorService, private router: Router) {
     this.source = new LocalDataSource();
-    this.usersService
-      .getOperators()
-      .subscribe(data => {
-        this.source.load(data.map((o: any) => ({ ...o, ssoForRoute: o.sso })));
-        //this.source.load(data.map((o:any)=>({...o,ssoForRoute2:o.sso})));
-      });      
+
+    this.operatorService.getOperators().subscribe((data) => {
+      this.source.load(data);
+    });
   }
 
-  ngOnInit() { }
-
   async onConfirmSave(event) {
-    let factory: Factory = event.newData;
-    factory.id = Math.max(...(await this.source.getAll()).map(x => x.id)) + 1;
+    const operator: Operator = event.newData;
+    operator.id = Math.max(...(await this.source.getAll()).map((x) => x.id)) + 1;
     // Send to API to save record and the resolve
-    event.confirm.resolve(factory);
+    this.operatorService.createOperator(operator).subscribe((res) => {
+      event.confirm.resolve(operator);
+    });
   }
 
   onEditConfirm(event) {
     // Send to API to edit the record and then resolve
-    event.confirm.resolve(event.newData);
+   // event.confirm.resolve(event.newData);
+  const operator : Operator = event.newData;
+   this.operatorService.updateOperator(operator).subscribe((res) => {
+    event.confirm.resolve(operator);
+  });
   }
 
   onDeleteConfirm(event): void {
-    if (window.confirm('Are you sure you want to delete?')) {
+    if (window.confirm("Are you sure you want to delete?")) {
       // Send to API to remove and then resolve
-      event.confirm.resolve();
+      //const operator : Operator=event.newData;
+      const id : number = event.data.id;
+      this.operatorService.deleteOperator(id).subscribe((res)=>{
+        event.confirm.resolve(id);
+      })
+      
     } else {
       event.confirm.reject();
     }

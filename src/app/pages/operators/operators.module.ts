@@ -15,6 +15,7 @@ import { FormsModule } from "@angular/forms";
 import { FlatpickrModule } from "angularx-flatpickr";
 import { NgbModalModule } from "@ng-bootstrap/ng-bootstrap";
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { OperatorService } from '../../@core/services/operator.service';
 
 
 @NgModule({
@@ -33,6 +34,6 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
   ],
   exports: [],
   declarations: [OperatorsListComponent, OperatorsScheduleComponent, OperatorsEventsComponent, OperatorsCapabilitiesComponent],
-  providers: [],
+  providers: [OperatorService],
 })
 export class OperatorsModule { }

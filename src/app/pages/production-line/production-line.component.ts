@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductionLine } from '../../models';
-import { ProductionLineService } from '../../@core/mock/production-line.service';
+import { ProductionLineService } from '../../@core/services/production-line.service';
 import { LocalDataSource } from 'ng2-smart-table';
-import { ActionButtonComponent } from '../../@theme/components';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-production-line',
@@ -43,41 +41,53 @@ export class ProductionLineComponent implements OnInit  {
       name: {
         title: 'Production Line',
       },
-      factory: {
-        title: 'Factory',
-      },
-      // idForRoute: {
-      //   title: "Requirements",
-      //   type: 'custom',
-      //   renderComponent: ActionButtonComponent,
-      //   onComponentInitFunction: (instance) => {
-      //     instance.goToPage.subscribe(id => {
-      //       this.router.navigate(['/pages', 'task',id,'requirements']);
-      //     });
-      //   },
-      //   editable: false,
-      //   addable: false
-      // },
+      //factory: {
+       // title: 'Factory',
+      //},
     },
   };
 
-  constructor(private productionLineService: ProductionLineService, private router: Router) {
+
+  ngOnInit(){}
+
+  constructor(private productionLineService: ProductionLineService) {
     this.source = new LocalDataSource();
-    this.productionLineService
-      .getProductionLines()
-      .subscribe(data => {
-       this.source.load(data.map((o: any) => ({ ...o, idForRoute: o.id })));
-      });   
-    };
-  ngOnInit(){
-    this.productionLineService
-    .getProductionLines()
-    .subscribe(productionLines => (this.productionLines = productionLines));
+
+    this.productionLineService.getProductionLines().subscribe((data) => {
+      this.source.load(data);
+    });
   }
-  getSubbusiness(){}
-  getFactory(){}
-  getOperation(){}
-  //getProdline(){}
-  deleteRequirement(id:number){}
-  editRequirement(){}
+
+  async onConfirmSave(event) {
+    const productionLine: ProductionLine = event.newData;
+    productionLine.id = Math.max(...(await this.source.getAll()).map((x) => x.id)) + 1;
+    
+    // Send to API to save record and the resolve
+    this.productionLineService.createProductionLine(productionLine).subscribe((res) => {
+      event.confirm.resolve(productionLine);
+    });
+  }
+
+  onEditConfirm(event) {
+    // Send to API to edit the record and then resolve
+   // event.confirm.resolve(event.newData);
+  const production_line : ProductionLine = event.newData;
+   this.productionLineService.updateProductionLine(production_line).subscribe((res) => {
+    event.confirm.resolve(production_line);
+  });
+  }
+
+  onDeleteConfirm(event): void {
+    if (window.confirm("Are you sure you want to delete?")) {
+      // Send to API to remove and then resolve
+      const id : number = event.data.id;
+      this.productionLineService.deleteProductionLine(id).subscribe((res)=>{
+        event.confirm.resolve(id);
+      })
+      
+    } else {
+      event.confirm.reject();
+    }
+  }
+
 }

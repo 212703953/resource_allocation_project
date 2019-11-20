@@ -6,7 +6,6 @@ import {
   TemplateRef,
 } from "@angular/core";
 import { Operator } from "../../../models";
-import { UserService } from "../../../@core/mock/users.service";
 import { ActivatedRoute, Router } from "@angular/router";
 
 import {
@@ -130,7 +129,6 @@ export class OperatorsScheduleComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private userService: UserService,
     private modal: NgbModal,
   ) {}
 
@@ -138,12 +136,6 @@ export class OperatorsScheduleComponent implements OnInit {
   public operator: Operator;
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      if (params.sso) {
-        this.operator = this.userService.getOperatorBySso(+params.sso);
-        this.isRetrieving = false;
-      }
-    });
   }
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
